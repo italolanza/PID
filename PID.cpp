@@ -79,10 +79,10 @@ double PID::process ()
 		P = error * kP;
 		
 		//I - "somatório dos erros"
-		I = I + (error * kI) * deltaTime;
+		I = I + (error * deltaTime) * kI;
 		
 		//D - "derivara do erro"
-		D = (lastError - error) * kD;
+		D = ((lastError - error) / deltaTime) * kD;
 		lastError = error;
 		
 		// Soma todas as contribuições
