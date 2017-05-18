@@ -61,7 +61,7 @@ double PID::getKI()
     return kI;
 }
 
-void PID::getKD()
+double PID::getKD()
 {
     return kD;
 }
