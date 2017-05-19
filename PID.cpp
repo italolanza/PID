@@ -6,10 +6,10 @@ PID::PID (double _kP, double _kI, double _kD)
   this->setKP(_kP);
   this->setKI(_kI);
   this->setKD(_kD);
-  P =	0;
-  I =	0;
+  P	=	0;
+  I	=	0;
   D	=	0;
-  lastError		=	0;
+  lastError	=	0;
   lastProcess	=	0;
 }
 //construtor com a opção de adicionar o setPoint logo na criação do objeto
@@ -19,9 +19,9 @@ PID::PID (double _kP, double _kI, double _kD, double _setPoint)
   	this->setKI(_kI);
   	this->setKD(_kD);
 	this->setSetPoint(_setPoint);
-	P			=	0;
-	I			=	0;
-	D			=	0;
+	P	=	0;
+	I	=	0;
+	D	=	0;
 	lastError	=	0;
   	lastProcess	=	0;
 }
@@ -33,7 +33,7 @@ void PID::addNewSample (double _sample)
 
 void PID::setSetPoint( double _setPoint)
 {
-	setPoint = _setPoint;
+    setPoint = _setPoint;
 }
 
 void PID::setKP(double _kP)
