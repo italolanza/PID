@@ -14,6 +14,7 @@ class PID
     	    PID(double,double,double,double);
             void addNewSample (double);
             void setSetPoint(double);
+	    void setMaxKI(double);
             void setKP(double);
             void setKI(double);
             void setKD(double);
@@ -30,6 +31,7 @@ class PID
             double P, I, D;
             double pid;
             double setPoint;
+	    double maxKI;
 	    long lastProcess;
            
 
