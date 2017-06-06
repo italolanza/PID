@@ -11,6 +11,7 @@ PID::PID (double _kP, double _kI, double _kD)
   D	=	0;
   lastError	=	0;
   lastProcess	=	0;
+  maxKI	=	0;
 }
 //construtor com a opção de adicionar o setPoint logo na criação do objeto
 PID::PID (double _kP, double _kI, double _kD, double _setPoint)
@@ -24,6 +25,7 @@ PID::PID (double _kP, double _kI, double _kD, double _setPoint)
 	D	=	0;
 	lastError	=	0;
   	lastProcess	=	0;
+	maxKI	=	0;
 }
 
 void PID::addNewSample (double _sample)
@@ -34,6 +36,11 @@ void PID::addNewSample (double _sample)
 void PID::setSetPoint( double _setPoint)
 {
     setPoint = _setPoint;
+}
+
+void PID::setMaxKI(double _maxKI)
+{
+	maxKI = _maxKI;
 }
 
 void PID::setKP(double _kP)
@@ -71,7 +78,7 @@ double PID::process ()
     // Implementação PID
         
 		error = setPoint - sample;    
-		float deltaTime = (millis() - lastProcess) / 1000.0; //deltaTime esta em segundos
+		float deltaTime = (millis() - lastProcess) / 1000.0;		//deltaTime esta em segundos
 		lastProcess = millis();
 	
 	
@@ -80,6 +87,8 @@ double PID::process ()
 		
 		//I - "somatório dos erros"
 		I = I + ((error * deltaTime) * kI);
+		if( maxKI =! 0 && I > maxKI)	I = maxKI; 				// se maxKI for diferente de zero e o valor de I > KI o I sera maxKI
+		else if ( maxKI =! 0 && I < -maxKI)	I = -maxKI;		
 		
 		//D - "derivara do erro"
 		D = ((lastError - error) / deltaTime) * kD;
