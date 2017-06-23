@@ -27,6 +27,7 @@ class PID
             double error;
             double lastError;
             double sample;
+	    double lastSample;
             double kP, kI, kD;
             double P, I, D;
             double pid;
