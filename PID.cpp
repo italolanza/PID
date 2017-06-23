@@ -98,7 +98,7 @@ double PID::process ()
 		lastSample 	= sample;
 		
 		// Soma todas as contribuições
-		pid = P + I + D;
+		pid = P + I - D;
 		
     return pid;
 }
