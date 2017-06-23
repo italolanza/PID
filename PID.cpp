@@ -10,6 +10,7 @@ PID::PID (double _kP, double _kI, double _kD)
   I	=	0;
   D	=	0;
   lastError	=	0;
+  lastSample	=	0;
   lastProcess	=	0;
   maxKI	=	0;
 }
@@ -24,6 +25,7 @@ PID::PID (double _kP, double _kI, double _kD, double _setPoint)
 	I	=	0;
 	D	=	0;
 	lastError	=	0;
+	lastSample	=	0;
   	lastProcess	=	0;
 	maxKI	=	0;
 }
@@ -91,8 +93,9 @@ double PID::process ()
 		else if ( maxKI =! 0 && I < -maxKI)	I = -maxKI;		
 		
 		//D - "derivara do erro"
-		D = ((lastError - error) / deltaTime) * kD;
-		lastError = error;
+		D 		= ((sample - lastSample) / deltaTime) * kD;
+		lastError 	= error;
+		lastSample 	= sample;
 		
 		// Soma todas as contribuições
 		pid = P + I + D;
