@@ -10,30 +10,31 @@
 class PID
 {
     public:
+            PID(void);
             PID(double,double,double);
     	    PID(double,double,double,double);
             void addNewSample (double);
             void setSetPoint(double);
-	    void setMaxKI(double);
+	        void setMaxKI(double);
             void setKP(double);
             void setKI(double);
             void setKD(double);
-	    double getKP();
-	    double getKI();
-	    double getKD();
-	    double process();
+            double getKP();
+            double getKI();
+            double getKD();
+            double process();
 
     private:
             double error;
             double lastError;
             double sample;
-	    double lastSample;
+	        double lastSample;
             double kP, kI, kD;
             double P, I, D;
             double pid;
             double setPoint;
-	    double maxKI;
-	    long lastProcess;
+	        double maxKI;
+	        long lastProcess;
            
 
 };
